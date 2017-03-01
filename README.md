@@ -1,9 +1,9 @@
 
-# PHPServerMonitor in Docker (Last version 3.1.1)
+# PHPServerMonitor in Docker (`develop` Branch)
 
 
 
-### Last update : 08/09/2016 . Created repository with version 3.1.1
+### Last update : 01/03/2017
 #### Please open issues on [github](https://github.com/Quentinvarquet/docker-phpservermonitor/issues)
 
 
@@ -15,7 +15,7 @@
 
 [Docker](https://www.docker.com/) allows you to package an application with all of its dependencies into a standardized unit for software development.
 
-More information : 
+More information:
 
 * [What is docker](https://www.docker.com/what-docker)
 * [How to Create a Docker Business Case](https://www.brianchristner.io/how-to-create-a-docker-business-case/)
@@ -49,7 +49,7 @@ docker run --name phpservermonitor -p 80:80 -d quentinv/phpservermonitor:latest
 
 ### Docker Compose
 
-I created a docker-compose.yml with twi containers : PhpServerMonitor and MySQL
+I created a docker-compose.yml with two containers : PhpServerMonitor and MySQL
 
 
 #### Docker Compose files
@@ -61,7 +61,7 @@ I created a docker-compose.yml with twi containers : PhpServerMonitor and MySQL
 #### Database configuration
 
 
-If you used my docker-compose.yml file you have to : 
+If you used my docker-compose.yml file you have to:
 
 1 - Go on phpmyadmin : http://ip_of_your_server:81  (If you don't want to use phpmyadmin for security reasons you can just delete the container in my docker-compose.yml file and create your database with the command line from the container MySQL.)
 2 - Create a database : monitor (you can use another name)
@@ -74,4 +74,3 @@ If you used my docker-compose.yml file you have to :
 * **Database User:** root
 * **Data Password:** your_password
 * **Table Previx:** psm_
-

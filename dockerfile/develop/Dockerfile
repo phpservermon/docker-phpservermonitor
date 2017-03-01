@@ -9,19 +9,18 @@ CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 EXPOSE 80
 EXPOSE 443
 
-ENV VERSION 3.1.1
-ENV PHPMONITOR_URL https://sourceforge.net/projects/phpservermon/files/phpservermon/PHP%20Server%20Monitor%20v$VERSION/phpservermon-$VERSION.tar.gz/download
+ENV VERSION develop
+ENV PHPMONITOR_URL https://github.com/phpservermon/phpservermon/archive/develop.zip
 
 RUN set -x \
     && cd /var/www/html \
 	&& rm -rf * \
 	&& cd /tmp \
-	&& wget $PHPMONITOR_URL \ 
-	&& mv download phpmonitor.tar.gz \
-	&& tar -xvf phpmonitor.tar.gz --strip-components=1 \
-	&& cd phpservermon-3.1.1 \
-	&& mv * /var/www/html \ 
+	&& wget $PHPMONITOR_URL \
+	&& unzip develop.zip\
+	&& cd phpservermon-develop \
+  && rm phpservermon-develop \
+	&& mv * /var/www/html \
 	&& cd /var/www/html \
 	&& touch config.php \
 	&& chmod 0777 config.php
-	
