@@ -1,7 +1,7 @@
 FROM eboraas/apache
 MAINTAINER Ed Boraas <ed@boraas.ca>
 
-RUN apt-get update && apt-get -y install php5 php5-mysql curl wget php5-curl && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get -y install php5 php5-mysql curl wget php5-curl cron && apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN /usr/sbin/a2dismod 'mpm_*' && /usr/sbin/a2enmod mpm_prefork
 
 
@@ -23,5 +23,6 @@ RUN set -x \
 	&& mv * /var/www/html \ 
 	&& cd /var/www/html \
 	&& touch config.php \
-	&& chmod 0777 config.php
+	&& chmod 0777 config.php \
+	&& echo "*/15 * * * * root /usr/bin/php /var/www/html/cron/status.cron.php" >> /etc/crontab
 	
