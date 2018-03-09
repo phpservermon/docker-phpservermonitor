@@ -24,5 +24,6 @@ RUN set -x \
 	&& cd /var/www/html \
 	&& touch config.php \
 	&& chmod 0777 config.php \
+	&& cron \
 	&& echo "*/15 * * * * root /usr/bin/php /var/www/html/cron/status.cron.php" >> /etc/crontab
 	
