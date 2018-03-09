@@ -13,21 +13,10 @@ services:
     image: mysql:5.7
     environment:
      - MYSQL_ROOT_PASSWORD=YOUR_PASSWORD
+     - MYSQL_DATABASE=phpservermonitor
     networks:
      - network
     restart: always
-
-
- phpmyadmin:
-    image: corbinu/docker-phpmyadmin
-    environment:
-     - MYSQL_USERNAME=root
-     - MYSQL_PASSWORD=YOUR_PASSWORD
-     - MYSQL_PORT_3306_TCP_ADDR=NAME_MYSQL_CONTAINERs
-    ports:
-     - 81:80    
-    networks:
-     - network 
 
 networks:
   network:
