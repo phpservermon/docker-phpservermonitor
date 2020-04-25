@@ -6,7 +6,7 @@ RUN apt-get update
 
 # Install & Setup Dependencies
 RUN set -ex; \
-    apt-get install -y curl iputils-ping; \
+    apt-get install -y curl iputils-ping unzip; \
     #docker-php-ext-configure gd --with-freetype-dir=/usr --with-jpeg-dir=/usr --with-webp-dir=/usr --with-png-dir=/usr --with-xpm-dir=/usr; \
     docker-php-ext-install pdo pdo_mysql mysqli sockets; \
     apt-get clean; \
@@ -48,14 +48,16 @@ VOLUME /sessions
 
 # Build Environment Variables
 ENV VERSION 3.4.5
-ENV URL https://github.com/phpservermon/phpservermon/releases/download/v${VERSION}/phpservermon-${VERSION}.tar.gz
+ENV URL https://github.com/phpservermon/phpservermon/releases/download/v${VERSION}/phpservermon-${VERSION}.zip
 
 # Extract Repo HTML Files
 RUN set -ex; \
   cd /tmp; \
   rm -rf ${APACHE_DOCUMENT_ROOT}/*; \
-  curl --output phpservermonitor.tar.gz --location $URL; \
-  tar -xvf phpservermonitor.tar.gz --strip-components=1 -C ${APACHE_DOCUMENT_ROOT}/; \ 
+  curl --output phpservermon.zip --location $URL; \
+  unzip phpservermon.zip; \
+  cd phpservermon-${VERSION}; \
+  cp -r . ${APACHE_DOCUMENT_ROOT}/; \
   cd ${APACHE_DOCUMENT_ROOT}
 #   chown -R ${APACHE_RUN_USER}:www-data /var/www
 #   find /var/www -type d -exec chmod 750 {} \; ; \
