@@ -48,7 +48,7 @@ VOLUME /sessions
 
 # Build Environment Variables
 ENV VERSION 3.4.5
-ENV URL https://github.com/phpservermon/phpservermon/releases/download/v${VERSION}/phpservermon-${VERSION}.tar.gz
+ENV URL https://github.com/phpservermon/phpservermon/archive/v${VERSION}.tar.gz 
 
 # Extract Repo HTML Files
 RUN set -ex; \
