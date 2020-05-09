@@ -30,7 +30,7 @@ mkdir -p "/tmp/php-server-monitor"
 cd "/tmp/php-server-monitor"
 
 # Clone Git Repo
-git clone https://github.com/phpservermon/phpservermonitor.git phpservermonitor
+git clone https://github.com/phpservermon/phpservermon.git phpservermonitor
 cd phpservermonitor/
 
 # Build Docker Image
