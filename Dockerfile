@@ -1,4 +1,4 @@
-FROM php:7.2-apache-stretch
+FROM php:7.4-apache
 # MAINTAINER Austin St. Aubin <austinsaintaubin@gmail.com>
 
 # Build Environment Variables
@@ -11,7 +11,7 @@ RUN apt-get update
 # Install & Setup Dependencies
 RUN set -ex; \
     apt-get install -y curl iputils-ping; \
-    apt-get install zip unzip; \
+    apt-get install zip unzip git; \
     #docker-php-ext-configure gd --with-freetype-dir=/usr --with-jpeg-dir=/usr --with-webp-dir=/usr --with-png-dir=/usr --with-xpm-dir=/usr; \
     docker-php-ext-install pdo pdo_mysql mysqli sockets; \
     apt-get clean; \
