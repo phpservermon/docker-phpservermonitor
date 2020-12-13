@@ -16,8 +16,6 @@ services:
       - MYSQL_DATABASE_PREFIX=psm_
     ports:
       - 8080:80
-    dns:
-      - 192.168.3.8
     links:
       - "db:database"
     volumes:
