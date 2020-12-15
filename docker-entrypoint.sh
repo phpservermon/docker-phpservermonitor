@@ -49,6 +49,9 @@ EOF
 
 fi
 
+# wait until mariadb is ready
+/usr/local/bin/maria-wait.sh
+
 # first arg is `-f` or `--some-option`
 if [ "${1#-}" != "$1" ]; then
 	set -- apache2-foreground "$@"
