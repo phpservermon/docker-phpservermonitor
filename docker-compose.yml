@@ -2,6 +2,7 @@ version: '3.8'
 services:
 
   phpservermonitor:
+    build: .
     image: phpservermonitor:latest
     container_name: phpservermonitor
     restart: always
