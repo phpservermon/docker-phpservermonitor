@@ -21,6 +21,8 @@ services:
       - "db:database"
     volumes:
      - /sessions
+    depends_on:
+     - db
 
   db:
     image: mariadb
