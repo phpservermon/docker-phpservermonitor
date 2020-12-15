@@ -33,6 +33,8 @@ services:
       - MYSQL_USER=phpservermonitor
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=phpservermonitor
+    volumes:
+      - ./mariadb:/var/lib/mysql/phpservermonitor
 
   # phpmyadmin:
   #   image: phpmyadmin/phpmyadmin
