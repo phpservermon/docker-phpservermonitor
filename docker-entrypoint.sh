@@ -50,6 +50,7 @@ EOF
 fi
 
 # wait until mariadb is ready
+echo "Waiting until database is ready..."
 /usr/local/bin/maria-wait.sh
 
 # first arg is `-f` or `--some-option`
