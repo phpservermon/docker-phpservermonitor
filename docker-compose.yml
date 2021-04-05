@@ -10,15 +10,13 @@ services:
       - TIME_ZONE='Europe/Amsterdam'
       - PSM_REFRESH_RATE_SECONDS=15
       - PSM_AUTO_CONFIGURE=true
-      - MYSQL_HOST=database
+      - MYSQL_HOST=db
       - MYSQL_USER=phpservermonitor
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=phpservermonitor
       - MYSQL_DATABASE_PREFIX=psm_
     ports:
       - 8080:80
-    links:
-      - "db:database"
     volumes:
      - /sessions
     depends_on:

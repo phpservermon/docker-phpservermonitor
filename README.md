@@ -57,17 +57,20 @@ docker-compose up -d
 # Start Containers w/ Random Passwords
 export "MYSQL_ROOT_PASSWORD=$(cat /dev/urandom | LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)" "MYSQL_PASSWORD=$(cat /dev/urandom | LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
 
+# Create a network
+docker network create -d psm
+
 # phpservermonitor
 docker run -d --name phpservermonitor \
+  --network psm \
   --restart always \
-  --link phpservermonitor_mariadb \
   -v /sessions \
   --dns=192.168.3.8 \
   -p 8080:80 \
   -e TIME_ZONE='Europe/Amsterdam' \
   -e PSM_REFRESH_RATE_SECONDS=15 \
   -e PSM_AUTO_CONFIGURE=true \
-  -e MYSQL_HOST=database \
+  -e MYSQL_HOST=db \
   -e MYSQL_USER=phpservermonitor \
   -e MYSQL_PASSWORD=${MYSQL_PASSWORD} \
   -e MYSQL_DATABASE=phpservermonitor \
@@ -76,6 +79,7 @@ docker run -d --name phpservermonitor \
 
 # phpservermonitor_mariadb
 docker run -d --name phpservermonitor_mariadb \
+  --network psm --network-alias db \
   --restart always \
   -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} \
   -e MYSQL_USER=phpservermonitor \
