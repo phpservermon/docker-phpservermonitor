@@ -39,10 +39,8 @@ services:
   #   container_name: phpservermonitor_phpmyadmin
   #   restart: always
   #   environment:
-  #     - MYSQL_HOST=database
+  #     - PMA_HOST=db
   #   ports:
   #     - 8081:80
   #   volumes:
   #     - /sessions
-  #   links:
-  #     - "db:database"
