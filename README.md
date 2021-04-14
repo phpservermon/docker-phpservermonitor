@@ -92,7 +92,7 @@ docker run -d --name phpservermonitor_mariadb \
 
 Configuration should be automatic if the envirmental varable is set `PSM_AUTO_CONFIGURE=true`. Otherwise the configuration window should be prepopulated to the following.
 
-* **Database Host:** database
+* **Database Host:** db
 * **Database Name:** phpservermonitor
 * **Database User:** phpservermonitor
 * **Data Password:** YOUR_PASSWORD
